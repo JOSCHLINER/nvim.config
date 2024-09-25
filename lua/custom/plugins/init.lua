@@ -62,9 +62,6 @@ return {
       }
 
       -- Keybindings for DAP
-      vim.keymap.set('n', '<leader>d', function()
-        vim.cmd 'Ex'
-      end, { desc = 'View [d]irectory files' })
       vim.api.nvim_set_keymap('n', '<F5>', ':lua require"dap".continue()<CR>', { desc = 'continue debug', noremap = true })
       vim.api.nvim_set_keymap('n', '<F10>', ':lua require"dap".step_over()<CR>', { noremap = true })
       vim.api.nvim_set_keymap('n', '<F11>', ':lua require"dap".step_into()<CR>', { noremap = true })
@@ -73,10 +70,11 @@ return {
     end,
   },
 
-  --[[  {
-    'Jay-Madden/auto-fix-return.nvim',
+  -- Undotree
+  {
+    'mbbill/undotree',
     config = function()
-      require('auto-fix-return').setup {}
+      vim.api.nvim_set_keymap('n', '<leader>u', ':UndotreeToggle<CR>:UndotreeFocus<CR>', { noremap = true })
     end,
-  }, ]]
+  },
 }
