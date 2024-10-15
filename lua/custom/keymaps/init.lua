@@ -35,3 +35,14 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     vim.opt.filetype = 'html'
   end,
 })
+
+-- Indent lines with H, L in visual mode(s)
+vim.keymap.set({ 'v', 'x' }, '<C-h>', '<gv', { desc = 'Remove line indent' })
+vim.keymap.set({ 'v', 'x' }, '<C-l>', '>gv', { desc = 'Indent line' })
+
+-- Shift lines up and down
+vim.keymap.set({ 'v', 'x' }, '<C-k>', ":m '<-2<CR>gv=gv", { desc = 'Shift line up' })
+vim.keymap.set({ 'v', 'x' }, '<C-j>', ":m '>+1<CR>gv=gv", { desc = 'Shift line down' })
+
+-- TODO: fix this for gopls
+-- settings = { codelenses = { generate = false, gc_details = true, }
